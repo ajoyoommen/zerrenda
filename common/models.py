@@ -3,8 +3,8 @@ from django.utils import timezone
 
 
 class TimeStampedModel(models.Model):
-    created = models.DateTimeField()
-    modified = models.DateTimeField()
+    created = models.DateTimeField(editable=False)
+    modified = models.DateTimeField(editable=False)
 
     class Meta:
         abstract = True
