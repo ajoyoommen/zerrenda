@@ -1,5 +1,8 @@
 # Zerrenda
 
-Zerrenda is an app to create ToDo lists. Zerrenda is a Basque word which means list.
+Zerrenda is an app to create ToDo lists. This is a learning and best practices
+app with Django, DRF and other things.
 
-It has an additional (probably useless) history feature that can be used to maintain and construct a timeline.
+This will also be a mutli-tenant application, just for fun.
+
+Zerrenda is a Basque word which means list.
