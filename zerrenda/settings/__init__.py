@@ -1,8 +1,12 @@
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-SITE_ROOT = os.path.realpath(os.path.dirname('..'))
+BASE_DIR = os.path.abspath(
+    os.path.join(
+        os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+        ".."
+    )
+)
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ['SECRET_KEY']
@@ -83,10 +87,6 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-
-STATICFILES_DIRS = (
-    os.path.join(SITE_ROOT, 'static'),
-)
 
 STATIC_URL = '/static/'
 
