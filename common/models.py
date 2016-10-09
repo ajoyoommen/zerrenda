@@ -13,7 +13,7 @@ class TimeStampedMixin(models.Model):
         if not self.id:
             self.created = timezone.now()
         self.modified = timezone.now()
-        super(TimeStampedModel, self).save(*args, **kwargs)
+        super(TimeStampedMixin, self).save(*args, **kwargs)
 
 
 class SoftDeleteMixin(models.Model):
