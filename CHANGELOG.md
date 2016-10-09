@@ -7,3 +7,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 ### Added
 - LICENCE, README and CHANGELOG
+- Django Models for Lists and Items
+- Use ReactJS to display content on home page
+- Add DRF for Restful API
