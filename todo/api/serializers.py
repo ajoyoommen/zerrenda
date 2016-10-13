@@ -7,3 +7,9 @@ class ListSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.List
         fields = ('id', 'name', 'author')
+
+
+class ItemSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Item
+        fields = ('list', 'name', 'completed', 'author')
