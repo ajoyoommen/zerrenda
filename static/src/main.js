@@ -28,19 +28,23 @@ var List = React.createClass({
 });
 
 var ToDoComponent = React.createClass({
-  render: function () {
-    var list_a = [
-      {id: 1, name: 'learn to code', items: [
-        {id: 2, name: 'learn syntax'},
-        {id: 3, name: 'learn why it works'}
-      ]},
-      {id: 4, name: 'learn to debug', items:[
-        {id:5, name: 'find the approximate location'},
-        {id:6, name: 'follow the error trail'}
-      ]}
-    ];
+  getInitialState: function () {
+    return {data: []};
+  },
 
-    var lists = list_a.map(function (list) {
+  componentDidMount: function() {
+    $.ajax({
+      url: this.props.url,
+      dataType: 'json',
+      cache: false,
+      success: function (data) {
+        this.setState({data: data});
+      }.bind(this)
+    });
+  },
+
+  render: function () {
+    var lists = this.state.data.map(function (list) {
       return (
         <List key={list.id} name={list.name} items={list.items} />
       );
@@ -56,6 +60,6 @@ var ToDoComponent = React.createClass({
 });
 
 ReactDOM.render(
-  <ToDoComponent />,
+  <ToDoComponent url='/api/list/' />,
   document.getElementById('react-app')
 );
