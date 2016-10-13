@@ -5,6 +5,7 @@ from .. import models
 
 class ListSerializer(serializers.ModelSerializer):
     items = serializers.SerializerMethodField()
+    author = serializers.StringRelatedField()
 
     class Meta:
         model = models.List
@@ -19,8 +20,24 @@ class ListSerializer(serializers.ModelSerializer):
                 completed=item.completed
             ) for item in obj.items.all()]
 
+    def validate(self, validated_data):
+        request = self.context['request']
+        validated_data['author'] = request.user
+        instance = self.Meta.model(**validated_data)
+        instance.clean()
+        return validated_data
+
 
 class ItemSerializer(serializers.ModelSerializer):
+    author = serializers.StringRelatedField()
+
     class Meta:
         model = models.Item
-        fields = ('list', 'name', 'completed', 'author')
+        fields = ('id', 'list', 'name', 'completed', 'author')
+
+    def validate(self, validated_data):
+        request = self.context['request']
+        validated_data['author'] = request.user
+        instance = self.Meta.model(**validated_data)
+        instance.clean()
+        return validated_data
