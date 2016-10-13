@@ -7,6 +7,7 @@ from todo.api import viewsets
 
 router = routers.DefaultRouter()
 router.register(r'list', viewsets.ListViewSet, 'list')
+router.register(r'item', viewsets.ItemViewSet, 'item')
 
 
 urlpatterns = [
