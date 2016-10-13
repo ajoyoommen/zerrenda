@@ -8,6 +8,7 @@
     <script src="/static/libs/react.js"></script>
     <script src="/static/libs/react-dom.js"></script>
     <script src="/static/libs/browser.min.js"></script>
+    <script src="/static/libs/jquery-2.2.4.min.js"></script>
   </head>
   <body>
     <div class="container">
